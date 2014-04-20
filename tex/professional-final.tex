@@ -1,0 +1,718 @@
+\listfiles
+\documentclass[11pt]{article}
+\usepackage{kantlipsum}   %%% just for demo
+\usepackage{etex}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{ifthen}
+\usepackage[inline]{enumitem}
+\usepackage{marvosym}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+\usepackage{microtype}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\usepackage[explicit]{titlesec}
+\usepackage[a4paper,left=0.9in,top=0.9in,right=0.9in,bottom=0.9in,footskip=0.25in,heightrounded]{geometry}
+%sections style
+\titleformat{\section}
+            {\LARGE}
+            {}
+            {1em}
+            {\colorbox{color0}{\parbox[t]{%
+	           \dimexpr\linewidth-2\fboxsep\relax}%
+	               {\raggedright\rule[-4pt]{0pt}{20pt}%
+                    \textcolor{color00}{{#1}}}}%    Removed \uppercase
+            }
+            [\titleline{\color{blue}\titlerule[0.4pt]}]
+\titlespacing*{name=\section,numberless}{0cm}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+%
+\usepackage[many]{tcolorbox}
+\tcbuselibrary{skins,breakable}
+%
+\linespread{1.1}
+\setitemize{nolistsep,labelsep=1ex,leftmargin=*}
+%
+%% colors
+\colorlet{color0}{blue}% for section background
+\colorlet{color00}{magenta}% for section title text
+\colorlet{color1}{gray!80}%  for section rule and vertical rule
+\colorlet{color2}{blue!60}%  url color.
+\colorlet{color3}{magenta!40}%  for foot rule, footer and link
+\colorlet{color4}{olive!40}%  for tcolorbox background
+%
+%% left rule with tcolorbox
+\newtcolorbox{leftrulebox}[1][]{
+	colback=white,
+	colframe=color1,
+	left=0.5ex,
+	top=0pt,
+	bottom=0pt,
+	right=0pt,
+	arc=0pt,
+	outer arc=0pt,
+	enlarge left by=1.8in,
+%	enlarge right by=-\dimexpr1.8in+\parindent\relax,
+%	right=\dimexpr1.8in+\parindent\relax,
+	enlarge right by=-1.8in,
+	right=\dimexpr1.8in+0.5ex\relax,
+	leftrule=0.5pt,
+	rightrule=0pt,
+	toprule=0pt,
+	bottomrule=0pt,
+	breakable,
+	nobeforeafter,
+	enhanced jigsaw,
+	overlay unbroken and first={
+		\node[anchor=north east,inner ysep=0pt,align=right,text width=1.5in]
+		at ([yshift=-0.55ex]frame.north west) {\hfill#1};
+           \begin{tcbclipinterior}\fill[color4,opacity=0.25]
+           (frame.south west) rectangle ([xshift=-1.8in]frame.north east);
+        \end{tcbclipinterior},
+	},
+   overlay middle={
+           \begin{tcbclipinterior}\fill[color4,opacity=0.25]
+           (frame.south west) rectangle ([xshift=-1.8in]frame.north east);
+        \end{tcbclipinterior}},
+   overlay last={
+           \begin{tcbclipinterior}\fill[color4,opacity=0.25]
+           (frame.south west) rectangle ([xshift=-1.8in]frame.north east);
+        \end{tcbclipinterior}},
+	before=\vskip\itemsep\noindent
+}
+%
+\title{\bfseries\Huge Srinivas Upadhya}
+\author{}
+\date{}
+%
+\pagestyle{fancy}
+\fancyhf{} % delete current setting for header and footer
+\fancyfoot[R]{{\textcolor{color3}{\thepage/\pageref{LastPage}}}{}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.6pt}
+\let\oldfootrule\footrule
+\renewcommand\footrule{\color{color3}\oldfootrule}
+%\renewcommand{\headrule}{\vbox to 0pt{\hbox to \headwidth{\dotfill}\hss}}
+%\renewcommand{\headsep}{10pt}
+%
+\makeatletter
+    \let\ps@plain\ps@fancy
+\makeatother
+%
+%% symbols
+%
+\newcommand*{\marvosymbol}[1]{}
+\renewcommand*{\marvosymbol}[1]{%
+    {\fontfamily{mvs}\fontencoding{U}\fontseries{m}\fontshape{n}\selectfont\char#1}%
+  }%
+%
+\newcommand*{\mobilephonesymbol}   {\marvosymbol{72}~}
+\newcommand*{\fixedphonesymbol}    {\marvosymbol{84}~}
+\newcommand*{\faxphonesymbol}      {\marvosymbol{117}~}
+\newcommand*{\emailsymbol}         {\marvosymbol{66}~}
+\newcommand*{\homepagesymbol}      {{\Large\marvosymbol{205}}~}
+\newcommand*{\linkedinsymbol}{%
+  \protect\raisebox{-0.0000165em}{%
+    \protect\begin{tikzpicture}[x=0.08em, y=0.08em, xscale=0.25, yscale=-0.25, inner sep=0pt, outer
+                                     sep=0pt]
+      \protect\begin{scope}[cm={{0.60,0.0,0.0,0.60,(346.39,123.07)}}]
+        \protect\path[fill=color2]
+          (381,202) -- (434,202) .. controls (439,202) and (442,205) ..
+          (442,210) -- (442,264) .. controls (442,268) and (439,272) ..
+          (434,272) -- (381,272) .. controls (376,272) and (372,268) ..
+          (372,264) -- (372,210) .. controls (372,205) and (376,202) ..
+          (381,202) -- cycle;
+        \protect\begin{scope}[xscale=0.98, yscale=1.02, fill=white]
+          \protect\path[fill=white]
+            (403,253) -- (403,224) -- (394,224) -- (394,253) --
+            cycle(398,211) .. controls (397,211) and (395,212) ..
+            (395,213) .. controls (394,213) and (393,215) ..
+            (393,216) .. controls (393,217) and (394,218) ..
+            (395,219) .. controls (395,220) and (397,220) ..
+            (398,220) .. controls (400,220) and (401,220) ..
+            (402,219) .. controls (402,218) and (403,217) ..
+            (403,216) .. controls (403,215) and (402,213) ..
+            (402,213) .. controls (401,212) and (400,211) ..
+            (398,211) -- cycle;
+          \protect\path[fill=white]
+            (410,253) -- (419,253) --
+            (419,236) .. controls (419,236) and (419,235) ..
+            (419,235) .. controls (419,235) and (419,234) ..
+            (419,234) .. controls (419,233) and (420,232) ..
+            (421,232) .. controls (422,231) and (423,231) ..
+            (424,231) .. controls (425,231) and (427,231) ..
+            (427,232) .. controls (428,234) and (428,235) ..
+            (428,237) -- (428,253) -- (437,253) --
+            (437,236) .. controls (437,232) and (436,228) ..
+            (434,226) .. controls (433,224) and (430,223) ..
+            (427,223) .. controls (425,223) and (423,224) ..
+            (421,225) .. controls (420,226) and (419,227) ..
+            (418,228) -- (418,228) -- (417,224) --
+            (410,224) .. controls (410,225) and (410,227) ..
+            (410,228) .. controls (410,230) and (410,231) ..
+            (410,233) -- cycle;
+        \protect\end{scope}%
+      \protect\end{scope}%
+    \protect\end{tikzpicture}}%
+  ~}
+\newcommand*{\twittersymbol} {%
+  \protect\raisebox{0em}{%
+    \protect\begin{tikzpicture}[x=0.08em, y=0.08em, xscale=0.005, yscale=-0.005, inner sep=0pt, outer
+                                 sep=0pt]
+      \protect\path[fill=color2]
+        (2000, 192) .. controls (1926, 225) and (1847, 247) ..
+        (1764, 257) .. controls (1849, 206) and (1914, 126) ..
+        (1945,  30) .. controls (1865,  77) and (1778, 111) ..
+        (1684, 130) .. controls (1609,  50) and (1503,   0) ..
+        (1385,   0) .. controls (1158,   0) and ( 974, 184) ..
+        ( 974, 410) .. controls ( 974, 442) and ( 978, 474) ..
+        ( 985, 504) .. controls ( 644, 487) and ( 342, 323) ..
+        ( 139,  75) .. controls ( 104, 136) and (  84, 206) ..
+        (  84, 281) .. controls (  84, 424) and ( 156, 549) ..
+        ( 266, 623) .. controls ( 199, 621) and ( 136, 602) ..
+        (  80, 572) .. controls (  80, 573) and (  80, 575) ..
+        (  80, 577) .. controls (  80, 776) and ( 222, 941) ..
+        ( 409, 979) .. controls ( 375, 988) and ( 339, 993) ..
+        ( 301, 993) .. controls ( 275, 993) and ( 249, 991) ..
+        ( 224, 986) .. controls ( 276,1149) and ( 428,1268) ..
+        ( 607,1271) .. controls ( 467,1381) and ( 290,1447) ..
+        (  98,1447) .. controls (  65,1447) and (  32,1445) ..
+        (   0,1441) .. controls ( 182,1557) and ( 397,1625) ..
+        ( 629,1625) .. controls (1384,1625) and (1796,1000) ..
+        (1796, 458) .. controls (1796, 440) and (1796, 422) ..
+        (1795, 405) .. controls (1875, 347) and (1945, 275) ..
+        (2000, 192);
+    \protect\end{tikzpicture}}%
+  ~}
+\newcommand*{\githubsymbol}  {%
+  \protect\raisebox{-0.15em}{%
+    \protect\begin{tikzpicture}[x=0.08em, y=0.08em, xscale=0.25, yscale=-0.25, inner sep=0pt, outer
+                                 sep=0pt]
+      \protect\begin{scope}[shift={(507,387)}]
+        \protect\path[fill=color2]
+          (117, 60) .. controls (117, 71) and (108, 81) ..
+          ( 96, 81) .. controls ( 85, 81) and ( 75, 71) ..
+          ( 75, 60) .. controls ( 75, 48) and ( 85, 39) ..
+          ( 96, 39) .. controls (108, 39) and (117, 48) ..
+          (117, 60) -- cycle;
+        \protect\path[cm={{0.88,0.0,0.0,0.88,(11.10,6.89)}}, fill=white]
+          (117, 60) .. controls (117, 71) and (108, 81) ..
+          ( 96, 81) .. controls ( 85, 81) and ( 75, 71) ..
+          ( 75, 60) .. controls ( 75, 48) and ( 85, 39) ..
+          ( 96, 39) .. controls (108, 39) and (117, 48) ..
+          (117, 60) -- cycle;
+        \protect\path[fill=color2, nonzero rule]
+          (103, 45) .. controls (103, 45) and (101, 46) ..
+          (101, 47) -- (100, 47) --
+          ( 99, 47) .. controls ( 99, 47) and ( 98, 47) ..
+          ( 97, 47) .. controls ( 94, 47) and ( 93, 47) ..
+          ( 92, 47) -- ( 92, 47) --
+          ( 91, 47) .. controls ( 90, 46) and ( 88, 45) ..
+          ( 88, 45) .. controls ( 88, 45) and ( 88, 45) ..
+          ( 87, 45) .. controls ( 87, 45) and ( 87, 45) ..
+          ( 87, 45) .. controls ( 86, 46) and ( 86, 48) ..
+          ( 86, 49) -- ( 87, 50) --
+          ( 86, 51) .. controls ( 85, 51) and ( 85, 52) ..
+          ( 85, 53) .. controls ( 85, 54) and ( 85, 57) ..
+          ( 85, 58) .. controls ( 85, 58) and ( 85, 58) ..
+          ( 82, 59) .. controls ( 79, 59) and ( 77, 59) ..
+          ( 77, 59) .. controls ( 77, 59) and ( 77, 59) ..
+          ( 78, 59) .. controls ( 80, 59) and ( 83, 59) ..
+          ( 85, 59) .. controls ( 85, 59) and ( 85, 59) ..
+          ( 85, 59) .. controls ( 86, 59) and ( 86, 59) ..
+          ( 86, 59) .. controls ( 86, 59) and ( 85, 59) ..
+          ( 84, 59) .. controls ( 82, 60) and ( 80, 60) ..
+          ( 79, 60) .. controls ( 78, 61) and ( 77, 61) ..
+          ( 77, 61) .. controls ( 77, 61) and ( 78, 61) ..
+          ( 79, 61) .. controls ( 81, 60) and ( 83, 60) ..
+          ( 85, 60) .. controls ( 86, 60) and ( 86, 60) ..
+          ( 86, 60) .. controls ( 86, 60) and ( 87, 61) ..
+          ( 88, 62) .. controls ( 89, 63) and ( 90, 63) ..
+          ( 92, 63) .. controls ( 92, 63) and ( 93, 64) ..
+          ( 93, 64) .. controls ( 93, 64) and ( 93, 64) ..
+          ( 93, 64) .. controls ( 92, 64) and ( 92, 65) ..
+          ( 92, 65) .. controls ( 92, 66) and ( 90, 66) ..
+          ( 89, 66) .. controls ( 88, 66) and ( 88, 66) ..
+          ( 87, 65) .. controls ( 87, 64) and ( 86, 63) ..
+          ( 86, 63) .. controls ( 85, 63) and ( 84, 63) ..
+          ( 84, 63) .. controls ( 84, 63) and ( 84, 63) ..
+          ( 84, 63) .. controls ( 85, 64) and ( 86, 65) ..
+          ( 86, 66) .. controls ( 87, 67) and ( 87, 68) ..
+          ( 88, 68) .. controls ( 89, 68) and ( 89, 68) ..
+          ( 90, 68) -- ( 92, 68) -- ( 92, 70) -- ( 92, 72) --
+          ( 91, 72) .. controls ( 91, 72) and ( 91, 73) ..
+          ( 91, 73) .. controls ( 90, 73) and ( 90, 73) ..
+          ( 91, 73) .. controls ( 92, 73) and ( 92, 73) ..
+          ( 92, 73) .. controls ( 93, 73) and ( 93, 73) ..
+          ( 93, 70) .. controls ( 93, 67) and ( 93, 67) ..
+          ( 94, 66) -- ( 94, 66) --
+          ( 94, 69) .. controls ( 94, 71) and ( 94, 73) ..
+          ( 94, 73) .. controls ( 94, 73) and ( 94, 73) ..
+          ( 93, 74) .. controls ( 93, 74) and ( 93, 74) ..
+          ( 93, 74) .. controls ( 93, 74) and ( 93, 74) ..
+          ( 94, 74) .. controls ( 94, 74) and ( 95, 74) ..
+          ( 96, 73) .. controls ( 96, 72) and ( 96, 71) ..
+          ( 96, 68) -- ( 96, 66) -- ( 96, 66) --
+          ( 96, 69) .. controls ( 96, 72) and ( 96, 72) ..
+          ( 97, 73) .. controls ( 97, 74) and ( 99, 74) ..
+          ( 99, 74) .. controls ( 99, 74) and ( 99, 74) ..
+          ( 99, 73) .. controls ( 99, 73) and ( 98, 73) ..
+          ( 98, 72) .. controls ( 98, 72) and ( 98, 66) ..
+          ( 98, 66) .. controls ( 98, 66) and ( 99, 66) ..
+          ( 99, 66) .. controls ( 99, 67) and ( 99, 67) ..
+          ( 99, 69) .. controls ( 99, 71) and ( 99, 72) ..
+          ( 99, 72) .. controls ( 99, 73) and (100, 73) ..
+          (100, 73) .. controls (101, 73) and (101, 73) ..
+          (101, 73) .. controls (102, 73) and (102, 73) ..
+          (102, 73) .. controls (101, 72) and (101, 72) ..
+          (101, 69) .. controls (101, 66) and (101, 65) ..
+          (100, 65) .. controls (100, 64) and (100, 64) ..
+          (100, 64) -- ( 99, 64) --
+          (100, 63) .. controls (101, 63) and (102, 63) ..
+          (103, 63) .. controls (104, 62) and (106, 61) ..
+          (106, 60) -- (106, 60) --
+          (107, 60) .. controls (109, 60) and (113, 60) ..
+          (115, 61) .. controls (115, 61) and (115, 61) ..
+          (115, 61) .. controls (115, 60) and (111, 60) ..
+          (108, 59) .. controls (107, 59) and (107, 59) ..
+          (107, 59) .. controls (107, 59) and (107, 59) ..
+          (107, 59) -- (107, 59) --
+          (108, 59) .. controls (110, 59) and (112, 59) ..
+          (114, 59) .. controls (115, 59) and (115, 59) ..
+          (115, 59) .. controls (115, 59) and (112, 59) ..
+          (109, 59) .. controls (108, 58) and (107, 58) ..
+          (107, 58) .. controls (107, 58) and (107, 58) ..
+          (107, 58) .. controls (107, 57) and (107, 56) ..
+          (107, 55) .. controls (107, 53) and (107, 53) ..
+          (107, 53) .. controls (107, 52) and (106, 51) ..
+          (106, 50) -- (105, 50) --
+          (105, 48) .. controls (105, 47) and (105, 46) ..
+          (105, 46) -- (105, 45) --
+          (104, 45) .. controls (104, 45) and (104, 45) ..
+          (103, 45) -- cycle;
+      \protect\end{scope}%
+    \protect\end{tikzpicture}}%
+  ~}
+\newcommand*{\facebooksymbol} {%
+  \protect\raisebox{0em}{%
+    \protect\begin{tikzpicture}[x=0.08em, y=0.08em, xscale=0.022, yscale=-0.022, inner sep=0pt, outer
+                                 sep=0pt]
+    \protect\path[fill=color2,even odd rule] (31.9490,431.7110) .. controls
+        (31.9490,451.7890) and (48.2130,468.0510) .. (68.2890,468.0510) --
+        (431.7100,468.0510) .. controls (451.7880,468.0510) and (468.0500,451.7890) ..
+        (468.0500,431.7110) -- (468.0500,68.2900) .. controls (468.0500,48.2130) and
+        (451.7880,31.9500) .. (431.7100,31.9500) -- (68.2900,31.9500) .. controls
+        (48.2130,31.9500) and (31.9500,48.2140) .. (31.9500,68.2900) --
+        (31.9500,431.7110) -- cycle(259.0860,413.5380) -- (259.0860,268.1720) --
+        (222.7440,268.1720) -- (222.7440,213.6580) -- (259.0860,213.6580) .. controls
+        (259.0860,119.9870) and (263.0790,113.7190) .. (377.1980,113.7190) --
+        (377.1980,168.2320) .. controls (317.0490,168.2320) and (322.6840,171.5940) ..
+        (322.6840,213.6590) -- (377.1980,213.6590) -- (377.1980,268.1730) --
+        (322.6840,268.1730) -- (322.6840,413.5390) -- (259.0860,413.5390) -- cycle;
+    \protect\end{tikzpicture}}%
+  ~}
+%%
+%%
+\NewDocumentCommand\facebookdetail{O{}}
+{%
+    \IfValueT{#1}{%
+        \href{https://www.facebook.com/#1}{%
+            \makebox[0.4cm][c]{\facebooksymbol} \ttfamily #1}\par%
+            }%
+}%
+\NewDocumentCommand\githubdetail{O{}}
+{%
+    \IfValueT{#1}{%
+        \href{https://www.facebook.com/#1}{%
+            \makebox[0.4cm][c]{\githubsymbol} \ttfamily github}\par%
+            }%
+}%
+\NewDocumentCommand\twitterdetail{O{}}
+{%
+    \IfValueT{#1}{%
+        \href{https://www.facebook.com/#1}{%
+            \makebox[0.4cm][c]{\twittersymbol} \ttfamily Twitter} \par%
+            }%
+}%
+\NewDocumentCommand\linkedindetail{O{}}
+{%
+    \IfValueT{#1}{%
+        \href{https://www.facebook.com/#1}{%
+            \makebox[0.4cm][c]{\linkedinsymbol} \ttfamily LinkedIn} \par%
+            }%
+}%
+\NewDocumentCommand\homepagedetail{O{}}
+{%
+    \IfValueT{#1}{%
+        \href{https://www.facebook.com/#1}{%
+            \hspace*{-0.55ex}\makebox[0.4cm][l]{\homepagesymbol} \ttfamily \hspace{0.55ex}Home page}
+             \par%
+            }%
+}%
+
+\widowpenalty=8000
+\clubpenalty=8000
+
+%
+\usepackage{etoolbox}
+\makeatletter
+%
+%\patchcmd{\@afterheading}%
+%    {\clubpenalty \@M}{\clubpenalties 3 \@M \@M 0}{}{}
+%\patchcmd{\@afterheading}%
+%    {\clubpenalty \@clubpenalty}{\clubpenalties 2 \@clubpenalty 0}{}{}
+%
+\patchcmd{\@maketitle}
+    {\null\vskip 2em\begin{center}}
+    {\null\vskip -2em\centering}
+    {}
+    {}
+%
+\patchcmd{\@maketitle}
+    {\vskip 1em%
+	{\large \@date}%
+	    \end{center}\par\vskip 1.5em}
+    {\vskip 1em}
+    {}
+    {}
+%
+\patchcmd{\@maketitle}
+    {\begin{tabular}[t]{c}%
+	   \@author \end{tabular}}
+    {\begin{minipage}[t]{\textwidth}%
+	   \begin{minipage}[t]{0.33\textwidth}
+       address line 1 \par
+       address line 2 \par
+       address line 3 \par
+       \end{minipage}%
+       \hfill
+       \begin{minipage}[t]{0.33\textwidth}
+         \facebookdetail[srinivas.upadhya]
+	     \twitterdetail[srinivas.upadhya]
+         \linkedindetail[srinivas.upadhya]
+         \githubdetail[srinivas.upadhya]
+         \homepagedetail[srinivas.upadhya]
+       \end{minipage}%
+       \hfill
+       \begin{minipage}[t]{0.33\textwidth}
+          \begin{tabular}[t]{@{}r!{:}l@{}}
+            \color{black!65!white}\Large\fixedphonesymbol   & Land line \\
+            \color{black!65!white}\Large\mobilephonesymbol  & Mobile phone \\
+            \color{black!65!white}\small\faxphonesymbol     & Fax phone \\
+            \color{black!65!white}\emailsymbol              & e-mail
+          \end{tabular}
+       \end{minipage}
+	\end{minipage}}
+\makeatother
+%
+%\def\myauthor{user name}
+%\def\mytitle{username-vita}
+%\def\myemail{somemail@marquette.edu}
+%\def\myweb{CVsintellect}
+%\def\myphone{414-241-1627}
+%\def\mykeywords{
+%  resume,
+%  curriculum,
+%  vita,
+%  curriculum vita,
+%  cv,
+%}
+
+\usepackage[
+	ocgcolorlinks,
+    linkcolor=color3,
+%    urlcolor=gray!80,
+     urlcolor=color2,      %{[rgb]{0,0,0.54}},
+	%  unicode,
+	plainpages=false,
+	pdfpagelabels,
+	%  pdftitle={\mytitle},
+	%  pdfauthor={\myauthor},
+	%  pdfkeywords={\mykeywords}
+]{hyperref}
+% fix ocgcolor link breaking
+\makeatletter
+\AtBeginDocument{%
+	\newlength{\temp@x}%
+	\newlength{\temp@y}%
+	\newlength{\temp@w}%
+	\newlength{\temp@h}%
+	\def\my@coords#1#2#3#4{%
+		\setlength{\temp@x}{#1}%
+		\setlength{\temp@y}{#2}%
+		\setlength{\temp@w}{#3}%
+		\setlength{\temp@h}{#4}%
+		\adjustlengths{}%
+		\my@pdfliteral{\strip@pt\temp@x\space\strip@pt\temp@y\space\strip@pt\temp@w\space\strip@pt\temp@h\space re}}%
+	\ifpdf
+	\typeout{In PDF mode}%
+	\def\my@pdfliteral#1{\pdfliteral page{#1}}
+	\def\adjustlengths{}%
+	\fi
+	\ifxetex
+	\def\my@pdfliteral #1{\special{pdf: literal direct #1}}% isn't equivalent to this one
+	\def\adjustlengths{\setlength{\temp@h}{-\temp@h}\addtolength{\temp@y}{1in}\addtolength{\temp@x}{-1in}}%
+	\fi%
+	\def\Hy@colorlink#1{%
+		\begingroup
+		\ifHy@ocgcolorlinks
+		\def\Hy@ocgcolor{#1}%
+		\my@pdfliteral{q}%
+		\my@pdfliteral{7 Tr}% Set text mode to clipping-only
+		\else
+		\HyColor@UseColor#1%
+		\fi
+	}%
+	\def\Hy@endcolorlink{%
+		\ifHy@ocgcolorlinks%
+		\my@pdfliteral{/OC/OCPrint BDC}%
+		\my@coords{0pt}{0pt}{\pdfpagewidth}{\pdfpageheight}%
+		\my@pdfliteral{F}% Fill clipping path (the url's text) with current color
+		\my@pdfliteral{EMC/OC/OCView BDC}%
+		\begingroup%
+		\expandafter\HyColor@UseColor\Hy@ocgcolor%
+		\my@coords{0pt}{0pt}{\pdfpagewidth}{\pdfpageheight}%
+		\my@pdfliteral{F}% Fill clipping path (the url's text) with \Hy@ocgcolor
+		\endgroup%
+		\my@pdfliteral{EMC}%
+		\my@pdfliteral{0 Tr}% Reset text to normal mode
+		\my@pdfliteral{Q}%
+		\fi
+		\endgroup
+	}%
+}
+\makeatother
+% end fixes
+%
+\begin{document}
+\maketitle
+\section*{Objective}
+\begin{leftrulebox}[Objective]
+	\kant[1]
+\end{leftrulebox}
+
+
+\section*{Positions}
+\begin{leftrulebox}[1/2010 -- 2/2012]
+	\textbf{Lead Programmer}, Social Networks Inc \par
+	Some text \par some text\par
+	\begin{itemize}%[labelsep=1ex]
+		\item Reengineered multiple systems that fueled improvements to productivity, eficiency, uptime and
+                accuracy for global business operations. Developed code, system design and test/QA plans for
+                all solutions and often coordinated the national or international rollout.
+		\item Led, architected and participated in the design, testing and deployment of client/server,
+                multi-tier applications, ActiveX and related components.
+		\item Developed new procedures for requirements gathering, needs analysis, testing, scripting and
+                documentation to strengthen quality and functionality of business-critical applications.
+	\end{itemize}
+\end{leftrulebox}
+%
+\begin{leftrulebox}[1/2009 -- 2/2010]
+	\textbf{Programmer I}, The Coolest Search Engine \par
+	\begin{itemize}%[labelsep=1ex]
+		\item Led solutions engineering that involved process automation, macro conversion and functionality
+                enhancement. Replaced time-consuming, error prone manual processes with elegant, automated
+                solutions.
+		\item Developed and implemented cross-platform, Java-based POS system. Completed project under budget
+                and three weeks ahead of deadline.
+		\item Coded new solutions that increased availability and scalability by 45\% and 75\%, respectively.
+	\end{itemize}
+\end{leftrulebox}
+
+
+\section*{Skills}
+\begin{leftrulebox}[\textbf{Systems}]
+	\kant[1-2]
+\end{leftrulebox}
+%
+\begin{leftrulebox}[\textbf{Others}]
+	Some item here
+\end{leftrulebox}
+%
+\begin{leftrulebox}[\textbf{Databases}]
+	Some thing here
+\end{leftrulebox}
+
+\section*{Languages}
+%
+\begin{leftrulebox}[Proficiency]
+	\begin{itemize*}[leftmargin=-2em, itemjoin={{\hfil}}]
+		\item[] \makebox[1in][c]{Read}
+		\item[] \makebox[1in][c]{Write}
+		\item[] \makebox[1in][c]{Speak}
+	\end{itemize*}
+\end{leftrulebox}
+\vskip-\itemsep
+\begin{leftrulebox}[English]
+	\begin{itemize*}[leftmargin=-2em, itemjoin={{\hfil}}]
+		\item[$\circ$] \makebox[1in][l]{Proficient}
+		\item[$\circ$] \makebox[1in][l]{Proficient}
+		\item[$\circ$] \makebox[1in][l]{fluent}
+	\end{itemize*}
+\end{leftrulebox}
+\vskip-\itemsep
+\begin{leftrulebox}[Kannada]
+	\begin{itemize*}[leftmargin=-2em, itemjoin={{\hfil}}]
+		\item[$\circ$] \makebox[1in][l]{Native}
+		\item[$\circ$] \makebox[1in][l]{Proficient}
+		\item[$\circ$] \makebox[1in][l]{Fluent}
+	\end{itemize*}
+\end{leftrulebox}
+\vskip-\itemsep
+\begin{leftrulebox}[Hindi]
+	\begin{itemize*}[leftmargin=-2em, itemjoin={{\hfil}}]
+		\item[$\circ$] \makebox[1in][l]{Proficient}
+		\item[$\circ$] \makebox[1in][l]{Proficient}
+		\item[$\circ$] \makebox[1in][l]{Fluent}
+	\end{itemize*}
+\end{leftrulebox}
+%
+\section*{Projects}
+%
+\begin{leftrulebox}[1/2009 -- 1/2010]
+	\textbf{Social Analytics} \par
+	Social Network Inc. \par
+	client \par
+	Architect \par
+	\begin{itemize}
+		\item Visually represent the whole social analytics. Ability to traverse the graph smoothly.
+		\item Developed new procedures for requirements gathering, needs analysis, testing, scripting and
+                documentation to strengthen quality and functionality of business-critical applications.
+		\item Developed large-scale, portable, thread-safe and ultra-high performance foundation and application
+                infrastructure libraries.
+	\end{itemize}
+\end{leftrulebox}
+%
+\begin{leftrulebox}[1/2012 -- 1/2013]
+	\textbf{Cool Ads}\par
+	The Coolest Search Engine \par
+	Developer \par
+	\begin{itemize}
+		\item Analytics for display and usage of ads. Machine learning algorithms for learning from general
+                trends.
+		\item Trained and mentored junior programmers in programming methodologies and best practices.
+		\item Delivered back-office tools supporting ecommerce initiatives, enabling company to compete more
+                effectively in the marketplace through searchengine optimization.
+	\end{itemize}
+\end{leftrulebox}
+%
+\section*{Recommendations}
+%
+\begin{leftrulebox}[1]
+	\textbf{Sundar Pichai}, Work \par
+	Jay is an outstanding consultant who continuously exceeds the expectations set for his position. Jay willingly
+    accepts challenging assignments and offers to contribute where ever he can. Jay has demonstrated excellent
+    programming and analytical skills which are very essential to address the constantly evolving client's
+    business requirements.
+	
+	The best thing I noticed in him is his insatiable zeal to learn latest technical skills, technology stacks
+    and tools and offer better solutions.
+\end{leftrulebox}
+%
+\section*{Education}
+%
+\begin{leftrulebox}[1/2012 -- current]
+	\textbf{M.S.}, Software Engineering\par
+	Massachusetts Institute of Technology, USA \par
+	The degree program was designed to give students a wide variety of exposure to the high techworkplace.
+    Topics included programming, database administration and design, OOP and system design and analysis.
+	
+	There was also a heavy emphasis on business skills such as accounting and communications.
+    \par
+\end{leftrulebox}
+%
+\begin{leftrulebox}[1/2012 -- 1/2013]
+	\textbf{B.S.}, Computer Science \par
+	Massachusetts Institute of Technology, USA \par
+	The degree program was designed to give students a wide variety of exposure to the high techworkplace.
+    Topics included programming, database administration and design, OOP and system design and analysis.
+    There was also a heavy emphasis on business skills such as accounting and communications.
+\end{leftrulebox}
+%
+\section*{Patents}
+%
+\begin{leftrulebox}[1/2013]
+	\textit{Routing of Network Traffic} - Jay Smith, K.R. Krishnan \par
+	USA Patent, 4,704,724 \par
+	The degree program was designed to give students a wide variety of exposure to the high techworkplace. Topics
+    included programming, database administration and design, OOP and system design and analysis.
+	
+	There was also a heavy emphasis on business skills such as accounting and communications.
+\end{leftrulebox}
+%
+\section*{Publications}
+%
+\begin{leftrulebox}
+	There was also a heavy emphasis on business skills such as accounting and communications.
+\end{leftrulebox}
+%
+\begin{leftrulebox}[1/2013]
+	\textit{Exemplar driven Character Recognition in the Wild} - Jay Smith and Ron K. Twaine \par
+	BMVC \par
+	http://url.com \par
+	The degree program was designed to give students a wide variety of exposure to the high techworkplace.
+    Topics included programming, database administration and design, OOP and system design and analysis.
+	There was also a heavy emphasis on business skills such as accounting and communications.
+\end{leftrulebox}
+%
+\section*{Talks}
+%
+\begin{leftrulebox}[1/2012]
+	\textit{JavaOne} - Jay Smith, Ray Edmond \par
+	Enterprise Java Development \par
+	http://url.com \par
+	The degree program was designed to give students a wide variety of exposure to the high techworkplace.
+    Topics included programming, database administration and design, OOP and system design and analysis.
+	
+	There was also a heavy emphasis on business skills such as accounting and communications.
+	
+	\textit{Large Project Management} - Jay Smith \par
+	Project Lifecycle and Project Management \par
+	The degree program was designed to give students a wide variety of exposure to the high techworkplace.
+    Topics included programming, database\par
+	administration and design, OOP and system design and analysis. There was also a heavy emphasis on
+    business skills such as accounting and communications.
+\end{leftrulebox}
+%
+\section*{Certifications}
+%
+\begin{leftrulebox}[1/2012 -- 1/2013]
+	\textit{Sun Certified Java Developer (SCJD)} - Sun \par
+	67890
+\end{leftrulebox}
+%
+\section*{VOLUNTEER}
+%
+\begin{leftrulebox}
+	\textit{Education}, NGO \par
+	Teacher \par
+	experience
+\end{leftrulebox}
+%
+\section*{Personal}
+%
+\begin{leftrulebox}[ADDRESS]
+	\#12, street \par
+	City, State, Country - Pincode \par
+	Phone: Phone Number \par
+	e-mail: srinivas.upadhya@gmail.c(m)\par
+	Gender: Gender \par
+	Date of birth: 29/7/1988 \par
+	Marital status: Single \par
+	Nationality: Indian \par
+	Hobbies: Football, Gaming \par
+	Languages: English, Spanish
+\end{leftrulebox}
+%
+\section*{Custom}
+%
+\begin{leftrulebox}
+	The degree program was designed to give students a wide variety of exposure to the high techworkplace.
+    Topics included programming, \par
+	Database \par
+	administration and design, OOP and system design and analysis. There was also a heavy emphasis on
+    business skills such as accounting and communications.
+\end{leftrulebox}
+%
+\end{document} 
